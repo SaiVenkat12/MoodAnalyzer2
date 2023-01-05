@@ -35,5 +35,20 @@ namespace MoodAnalyseTest
             string actual = analyser.analyzeMood(message);
             Assert.AreEqual(actual, "Happy");
         }
+        [Test]
+        public void GivenEmptyMessage_ShouldThrowException()
+        {
+            string message = " ";
+            string actual = "Mood is Empty";
+            try
+            {
+                MoodAnalyser analyser = new MoodAnalyser(message);
+                analyser.analyzeMood(message);
+            }
+            catch (MoodAnalyserException e)
+            {
+                Assert.AreEqual(actual, message);
+            }
+        }
     }
 }
